@@ -9,7 +9,7 @@
 
 服务注册:  __Eureka__ / __Zookeeper__ / __Consul__ / __Nacos__  
 服务调用:  __Ribbon(负载调用均衡)__ , __openfeign/feign(服务调用)__  
-服务熔断:  __Hystrix__ / __Sentinel(哨兵)__  
+服务熔断降级:  __Hystrix__ / __Sentinel(哨兵)__  
 服务网关:  __SpringCloud Gateway__  
 服务配置:  __SpringCloud Config__ , __BUS 消息总线__  
 Stream消息驱动: __Stream__  
