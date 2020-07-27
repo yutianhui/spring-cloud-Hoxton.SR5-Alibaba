@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.study</groupId>
+    <artifactId>cloud2020</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-RELEASE</version>
+
+    <modules>
+        <module>cloud-provider-payment8001</module>
+        <module>cloud-consumer-order8002</module>
+        <module>cloud-api-commons</module>
+        <module>cloud-eureka-server7001</module>
+        <module>cloud-eureka-server7002</module>
+        <module>cloud-provider-payment8011</module>
+        <module>cloud-provider-payment8003</module>
+        <module>cloud-provider-payment8004</module>
+        <module>cloud-consumer-order8012</module>
+        <module>cloud-consumer-openfeign-order8022</module>
+        <module>cloud-provider-hystrix-payment8021</module>
+        <module>cloud-consumer-feign-hystrix-order8032</module>
+        <module>cloud-consumer-dashboard-hystrix-order8042</module>
+        <module>cloud-gateway-gateway9527</module>
+        <module>cloud-config-center3344</module>
+        <module>cloud-config-client3355</module>
+        <module>cloud-config-client3366</module>
+        <module>cloud-stream-rabbitmq-provider8801</module>
+        <module>cloud-stream-rabbitmq-consumer8802</module>
+        <module>cloud-stream-rabbitmq-consumer8803</module>
+        <module>cloudalibaba-provider-payment9010</module>
+        <module>cloudalibaba-provider-payment9020</module>
+        <module>cloudalibaba-consumer-order9110</module>
+        <module>cloudalibaba-config-nacos-client9501</module>
+        <module>cloudalibaba-sentinel-service8401</module>
+        <module>cloudalibaba-seata-order8052</module>
+        <module>cloudalibaba-test-project5555</module>
+        <module>cloudalibaba-seata-storage8062</module>
+        <module>cloudalibaba-seata-account8072</module>
+
+    </modules>
+
+    <!-- 这个父工程中来统一管理jar包的版本 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <junit.version>4.12</junit.version>
+        <log4j.version>1.2.17</log4j.version>
+        <lombok.version>1.18.12</lombok.version>
+        <mysql.version>8.0.20</mysql.version>
+        <druid.version>1.1.10</druid.version>
+        <mybatis.spring.boot.version>2.1.2</mybatis.spring.boot.version>
+    </properties>
+
+    <!-- 子模块继承之后,提供作用,锁定版本+子modlue不用写,groupId和version -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- SpringBoot2.2.2版本 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.2.2.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--SpringCloud Hoxton.SR5 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- springcloud阿里巴巴 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.1.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- mysql连接数据库的jar包 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!-- 引入druid数据源 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--导入mybatis-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.spring.boot.version}</version>
+            </dependency>
+            <!--junit-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <!--log4j-->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <!--添加热部署工具-->
+            <!--      <dependency>-->
+            <!--        <groupId>org.springframework.boot</groupId>-->
+            <!--        <artifactId>spring-boot-devtools</artifactId>-->
+            <!--        <optional>true</optional>-->
+            <!--        <version>2.2.2.RELEASE</version>-->
+            <!--      </dependency>-->
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                    <locales>en,fr</locales>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

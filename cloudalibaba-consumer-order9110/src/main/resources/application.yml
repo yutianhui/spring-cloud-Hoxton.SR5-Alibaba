@@ -1,0 +1,32 @@
+server:
+  port: 9110
+spring:
+  cloud:
+    sentinel:
+      # sentinel的控制面板的ip和端口号
+      transport:
+        dashboard: localhost:8080
+        # 默认8719端口,假如被占用会自动从8719开始依次的+1扫描
+        port: 8719
+      datasource:
+        nacos_ds:
+          nacos:
+            data-type: json
+            rule-type: flow
+            serverAddr: 192.168.43.246:8848
+            dataId: alibaba-nacos-consumer-order-sentinel
+#            groupId: DEFAULT_GROUP #默认值就是他
+    nacos:
+      discovery:
+        server-addr: 192.168.43.246:8848
+  application:
+    name: alibaba-nacos-consumer-order
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+# 开启sentinel对feign的支持
+feign:
+  sentinel:
+    enabled: true

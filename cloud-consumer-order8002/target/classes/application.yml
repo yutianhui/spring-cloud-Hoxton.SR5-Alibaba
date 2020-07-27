@@ -1,0 +1,26 @@
+server:
+  port: 8002
+spring:
+#  cloud:
+#    # 定义zookeeper的连接信息
+#    zookeeper:
+#      connect-string: 192.168.43.246:2181
+  application:
+    name: cloud-order-consumer
+  #设置监控到的地址
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      #采样率设置为0到1之间,1为全部采集
+      probability: 1
+eureka:
+  client:
+    register-with-eureka: true
+    # 是否从EurekaServer抓取已经有的注册信息,默认为false,单节点无所谓,集群必须设置true/才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: order8002
+    prefer-ip-address: true

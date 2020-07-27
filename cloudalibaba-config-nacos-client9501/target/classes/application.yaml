@@ -1,0 +1,4 @@
+spring:
+  profiles:
+#    active: test
+    active: dev #表示的是一个开发环境的文件

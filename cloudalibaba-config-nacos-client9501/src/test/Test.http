@@ -1,0 +1,4 @@
+###
+# 测试配置是否刷新
+GET http://localhost:9501/nclient/info
+Accept: application/json

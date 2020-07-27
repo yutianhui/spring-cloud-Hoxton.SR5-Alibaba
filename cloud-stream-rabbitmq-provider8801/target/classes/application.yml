@@ -1,0 +1,41 @@
+server:
+  port: 8801
+spring:
+  application:
+    name: cloud-stream-provider
+  rabbitmq:
+    host: 192.168.43.246
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: studyExchange #定义使用的交换器的名字
+          content-type: application/json
+      binders:
+        defaultRabbit: #配置绑定的rabbbitmq的配置信息
+            type: rabbit #绑定的类型
+            environment:
+              spring:
+                rabbitmq:
+                  host: 192.168.43.246
+                  port: 5672
+                  username: guest
+                  password: guest
+# 将服务注册到eureka中
+eureka:
+  instance:
+    instance-id: cloud-stream-provider8801
+    prefer-ip-address: true #显示服务的ip地址
+    lease-renewal-interval-in-seconds: 2 #设置心跳时间为2s
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+# 暴露监控的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,14 @@
+###
+# 测试创建订单的功能
+POST http://localhost:8052/order/create
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 3,
+  "userId": 1,
+  "productId": 1,
+  "count": 5,
+  "money": 50,
+  "status": 0
+}

@@ -1,0 +1,7 @@
+###
+GET http://localhost:9527/payment/result/1?name=45
+Accept: application/json
+
+###
+GET http://localhost:8021/payment/circuit/get/1
+Accept: application/json

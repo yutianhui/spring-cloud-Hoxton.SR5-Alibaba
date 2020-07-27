@@ -1,0 +1,33 @@
+server:
+  port: 3355
+spring:
+  application:
+    name: cloud-config-client
+  rabbitmq:
+    host: 192.168.43.246
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      label: master
+      name: application
+      profile: dev
+      #      uri: http://localhost:3344
+      #      uri: lb://cloud-config-center
+      discovery:
+        enabled: true
+        service-id: cloud-config-center
+# 将服务注册到eureka中
+eureka:
+  instance:
+    instance-id: cloud-config-client3355
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+# 暴露监控的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,55 @@
+server:
+  port: 8042
+spring:
+#  cloud:
+#    # 定义zookeeper的连接信息
+#    zookeeper:
+#      connect-string: 192.168.43.246:2181
+  application:
+    name: cloud-order-dashboard-hystrix-consumer
+eureka:
+  client:
+    register-with-eureka: true
+    # 是否从EurekaServer抓取已经有的注册信息,默认为false,单节点无所谓,集群必须设置true/才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: hystrix-dashboard-order8042
+    prefer-ip-address: true
+ribbon:
+  # 指定feign从服务器上获取资源的时间
+  ReadTimeout: 5000
+  # 指定feign从提供者服务器上连接超时时间
+  ConnectTimeout: 5000
+logging:
+  # 指定Openfeign的日志打印功能
+  level: {com.study.service.PaymentFeignService: debug}
+#feign:
+#  hystrix:
+#    enabled: true
+# 设置feign方法调用的默认最大时间
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2000
+
+#  开启Hystrix断路器
+#  feign.hystrix.enabled=true
+#  #配置Hystrix 超时时间   超时关闭
+#  #hystrix.command.default.execution.timeout.enabled=false
+#  #超时时间（默认1000ms）在调用方配置，被该调用方的所有方法的超时时间都是该值，优先级低于下边的指定配置
+#  hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=3000
+#  #在调用方配置，被该调用方的指定方法（HystrixCommandKey方法名）的超时时间是该值
+#  hystrix.command.HystrixCommandKey.execution.isolation.thread.timeoutInMilliseconds=4000
+#  #线程池核心线程数 默认为10
+#  hystrix.threadpool.default.coreSize=10
+#  #最大排队长度。默认-1  如果要从-1换成其他值则需重启，即该值不能动态调整，若要动态调整，需要使用到下边这个配置
+#  hystrix.threadpool.default.maxQueueSize=100
+#  #排队线程数量阈值，默认为5，达到时拒绝，如果配置了该选项，队列的大小是该队列
+#  hystrix.threadpool.default.queueSizeRejectionThreshold=5
+#  # 简言之，10s内请求失败数量达到20个，断路器开。  当在配置时间窗口内达到此数量的失败后，进行短路。默认20个
+#  hystrix.command.default.circuitBreaker.requestVolumeThreshold=20
+#  #短路多久以后开始尝试是否恢复，默认5s
+#  hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds=5
+#  #出错百分比阈值，当达到此阈值后，开始短路。默认50%
+#  hystrix.command.default.circuitBreaker.errorThresholdPercentage=50%
+#  #调用线程允许请求HystrixCommand.GetFallback()的最大数量，默认10。超出时将会有异常抛出，注意：该项配置对于THREAD隔离模式也起作用
+#  hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests=50000

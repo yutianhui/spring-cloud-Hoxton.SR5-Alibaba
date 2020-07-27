@@ -1,0 +1,25 @@
+###
+GET http://localhost:8401/testB
+Accept: application/json
+
+###
+# 测试调用链路进行限流
+GET http://localhost:8401/testC
+Accept: application/json
+
+###
+# 测试热点key的流控
+GET http://localhost:8401/testHotKey?p1=10
+Accept: application/json
+
+###
+# 测试针对资源的控制
+GET http://localhost:8401/byResource
+Accept: application/json
+
+###
+# 测试对自定以的服务降级类中的方法进行测试
+GET http://localhost:8401/byCustomSource
+Accept: application/json
+
+

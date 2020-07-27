@@ -1,0 +1,4 @@
+###
+# 接口测试
+GET http://localhost:9020/nacos/payment/get/serverport
+Accept: application/json

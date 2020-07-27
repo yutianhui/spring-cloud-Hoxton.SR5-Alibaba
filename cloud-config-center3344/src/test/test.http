@@ -1,0 +1,14 @@
+###
+# 刷新3355的配置
+POST http://localhost:3355/actuator/refresh
+Accept: application/json
+
+###
+# 测试消息总线
+POST http://localhost:3344/actuator/bus-refresh
+Accept: application/json
+
+###
+# 测试定点的通知
+POST http://localhost:3344/actuator/bus-refresh/cloud-config-client:3355
+Accept: application/json

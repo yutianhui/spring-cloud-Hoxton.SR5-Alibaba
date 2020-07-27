@@ -1,0 +1,14 @@
+###
+# 获取订单的接口调用
+GET http://localhost:8002/consumer/payment/get/1
+Accept: application/json
+
+###
+# 创建订单的接口
+POST http://localhost:8002/consumer/payment/creat
+Accept: application/json
+Content-Type: application/json
+
+{
+  "serial": "148781235413848"
+}

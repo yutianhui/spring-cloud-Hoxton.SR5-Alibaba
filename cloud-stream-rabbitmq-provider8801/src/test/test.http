@@ -1,0 +1,4 @@
+###
+# 测试发送请求向exchange中发送消息
+GET http://localhost:8801/send/hello
+Accept: application/json

@@ -1,0 +1,27 @@
+server:
+  port: 8022
+spring:
+#  cloud:
+#    # 定义zookeeper的连接信息
+#    zookeeper:
+#      connect-string: 192.168.43.246:2181
+  application:
+    name: cloud-order-openfeign-consumer
+eureka:
+  client:
+    register-with-eureka: true
+    # 是否从EurekaServer抓取已经有的注册信息,默认为false,单节点无所谓,集群必须设置true/才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: order8022
+    prefer-ip-address: true
+ribbon:
+  # 指定feign从服务器上获取资源的时间
+  ReadTimeout: 5000
+  # 指定feign从提供者服务器上连接超时时间
+  ConnectTimeout: 5000
+logging:
+  # 指定Openfeign的日志打印功能
+  level: {com.study.service.PaymentFeignService: debug}

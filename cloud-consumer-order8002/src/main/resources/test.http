@@ -1,0 +1,4 @@
+###
+# 测试payment8001新添加的方法是否可以调用
+GET http://localhost:8002/consumer/payment/zipkin
+Accept: application/json

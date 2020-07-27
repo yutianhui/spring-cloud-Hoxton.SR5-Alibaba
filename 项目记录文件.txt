@@ -1,0 +1,33 @@
+Eureka注册中心集群:
+    cloud-eureka-server7001
+    cloud-eureka-server7002
+服务提供者:
+    注册进Eureka的服务提供者:
+        cloud-provider-payment8001
+        cloud-provider-payment8011
+    注册进Zookeeper的服务提供者:
+        cloud-provider-payment8003
+    注册进Consul的服务提供者:
+        cloud-provider-payment8004
+    使用了hystrix的服务提供者-Eureka:
+        cloud-provider-hystrix-payment8021
+服务的消费者:(8..2)的模式
+    注册进Eureka/Zookeeper的服务消费者:
+        cloud-consumer-order8002
+    注册进Consul的服务消费者:
+        cloud-consumer-order8012
+    使用openfeign进行服务调用的服务消费者:
+        cloud-consumer-openfeign-order8022
+    使用hystrix的服务的消费者:
+        cloud-consumer-feign-hystrix-order8032
+
+
+
+
+
+
+
+
+
+
+

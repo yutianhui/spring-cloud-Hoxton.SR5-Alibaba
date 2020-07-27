@@ -1,0 +1,27 @@
+###
+# 测试创建订单的功能
+POST http://localhost:5555/test/create
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 45,
+  "productId": 44,
+  "count": 12,
+  "money": 450,
+  "status": 1
+}
+
+
+####
+# 测试更新的方法
+POST http://localhost:5555/test/update
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 45,
+  "status": 0
+}

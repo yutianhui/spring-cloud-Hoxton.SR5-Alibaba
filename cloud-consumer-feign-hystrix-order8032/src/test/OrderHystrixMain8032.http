@@ -1,0 +1,31 @@
+###
+GET http://localhost:8032/feign/payment/get/1
+Accept: application/json
+
+###
+# 测试延时的操作
+GET http://localhost:8032/feign/payment/tsleep/1
+Accept: application/json
+
+###
+# 测试服务的延时的调用
+GET http://localhost:8032/feign/payment/hystrix/test/1
+Accept: application/json
+
+
+###
+# 测试服务的延时的调用
+GET http://localhost:8032/feign/payment/hystrix/test1/1
+Accept: application/json
+
+###
+# 测试通过FallbackFactory创建的服务降级
+GET http://localhost:8032/consumer/payment/hystrix/tsleep/1
+Accept: application/json
+
+###
+#调用被监控端的带熔断的方法
+GET http://localhost:8032/consumer/payment/circuit/get/1
+Accept: application/json
+
+
